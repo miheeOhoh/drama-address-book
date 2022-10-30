@@ -1,0 +1,6 @@
+dependencies {
+    api project(':address-book-feature')
+    api project(':address-book-event')
+    implementation("org.springframework.boot:spring-boot-starter-web:${springBootVersion}")
+    implementation("org.springframework.boot:spring-boot-starter-data-mongodb:${springBootVersion}")
+}

@@ -1,0 +1,83 @@
+spring:
+  application:
+    name: addressbook
+  profiles:
+    active: default
+  mvc:
+    pathmatch:
+      matching-strategy: ant-path-matcher
+
+server:
+  port: 9093
+
+management:
+  endpoints.web.exposure.include: health
+
+nara:
+  janitor:
+    mode: local
+    id: io.naraway.addressbook
+    subscriptions: >
+#      io.naraplatform.stage
+    bootstrap-address: localhost:9092
+  swagger:
+    authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJzdGV2ZUBuZXh0cmVlLmlvIiwic2NvcGUiOlsic2NvcGUiXSwid29ya3NwYWNlcyI6eyJzdGF0aW9uV29ya3NwYWNlcyI6bnVsbCwic3F1YXJlV29ya3NwYWNlcyI6bnVsbCwicGF2aWxpb25Xb3Jrc3BhY2VzIjpudWxsLCJjaW5lcm9vbVdvcmtzcGFjZXMiOlt7ImlkIjoibmUxLW0xLWMxIiwibmFtZSI6IlN0ZXZlIiwidGVuYW50SWQiOiJvMS1yQG5lMS1tMS1jMSIsInJvbGVzIjpbIkFkbWluIiwiVXNlciJdfSx7ImlkIjoibmUxLW0xLWMyIiwibmFtZSI6IlN0ZXZlIiwidGVuYW50SWQiOiJvMS1yQG5lMS1tMS1jMiIsInJvbGVzIjpbIlVzZXIiXX1dLCJzdHVkaW9Xb3Jrc3BhY2UiOm51bGx9LCJleHAiOjE1OTAwNjM4MjEsImFkZHRpb25hbEluZm9ybWF0aW9uIjp7fSwiYXV0aG9yaXRpZXMiOlsiVVNFUiJdLCJqdGkiOiI0ZjkwOTdiZS1jMTI0LTRkZTctODU3NC0wNzFjODY5MjMxOTAiLCJjbGllbnRfaWQiOiJjbGllbnQifQ.12-ndMQGQY8MvsV7MyfBQiOIHOQD-rmDK37gkhxQJpY'
+
+logging:
+  level:
+    io.naraway: info
+  pattern:
+    console: '%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(%5p) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-60.60logger{59}){cyan} %clr(:){faint} %m%n%wEx'
+
+
+---
+spring:
+  config:
+    activate:
+      on-profile: default
+  data:
+    mongodb:
+      authentication-database: addressbook
+      host: localhost
+      port: 27017
+      database: addressbook
+      username: addressbook
+      password: addressbook
+
+nara:
+  janitor:
+    mode: local
+
+server:
+  port: 9093
+
+
+---
+spring:
+  config:
+    activate:
+      on-profile: k8s
+  data:
+    mongodb:
+      authentication-database: ${spring.application.name}
+      host: localhost
+      port: 27017
+      database: spring-study
+      username: mongo
+      password: root
+
+server:
+  port: 8080
+
+grpc:
+  port: 8090
+
+nara:
+  janitor:
+    mode: ${janitor.mode}
+    bootstrap-address: ${janitor.bootstrap-address}
+
+logging:
+  level:
+    root: ${log.level.root}
+

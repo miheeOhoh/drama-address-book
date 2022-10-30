@@ -1,0 +1,5 @@
+dependencies {
+    api("io.naraway:drama-prologue:${dramaPrologueVersion}")
+    api("io.naraway:janitor-lib:${janitorLibVersion}")
+    implementation("org.springframework.boot:spring-boot-starter-data-mongodb:${springBootVersion}")
+}

@@ -1,0 +1,31 @@
+{
+  "id": "addressbook",
+  "name": "AddressBook",
+  "version": "3.2.0",
+  "roles": [
+    {
+      "code": "director",
+      "name": "Director",
+      "description": "Director",
+      "defaultRole": false
+    },
+    {
+      "code": "teamAdmin",
+      "name": "teamAdmin",
+      "description": "teamAdmin",
+      "defaultRole": true
+    },
+    {
+      "code": "teamUser",
+      "name": "teamUser",
+      "description": "teamUser",
+      "defaultRole": true
+    },
+    {
+      "code": "personalUser",
+      "name": "personalUser",
+      "description": "personalUser",
+      "defaultRole": true
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+rootProject.name = 'drama-address-book'
+include 'address-book-aggregate'
+include 'address-book-feature'
+include 'address-book-event'
+include 'address-book-facade'
+include 'address-book-boot'
+include 'address-book-client'

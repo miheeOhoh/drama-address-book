@@ -1,0 +1,12 @@
+## DB 스키마 생성
+
+use addressbook
+db.createUser(
+  {
+    user: "addressbook",
+    pwd: "addressbook",
+    roles : [
+      { role: "readWrite", db: "addressbook" }
+    ]
+  }
+);

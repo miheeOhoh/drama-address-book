@@ -1,0 +1,15 @@
+dependencies {
+    api("io.naraway:drama-prologue:${dramaPrologueVersion}")
+    implementation("org.springframework.boot:spring-boot-starter-webflux:${springBootVersion}")
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId = group
+            artifactId = project.name
+            version = version
+            from components.java
+        }
+    }
+}
